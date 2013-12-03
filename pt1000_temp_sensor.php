@@ -22,10 +22,18 @@ while (1) {
 
 }
 
+function pt1000toC2 ($r) {
+	$R0 = 1000;
+	$A = 3.9083E-3;
+	$B = -5.775E-7;
+
+	$Rt = $R0 * (1 + $A* $t + $B*$t2 + $C*($t-100)* $t3);
+	
+	return $Rt;
+}
 function pt1000toC ($r, $r0) {
     $a=3.9083E-3; 
     $b=-5.775E-7; 
-    $t; 
     
     $r = $r / $r0; 
     
@@ -33,7 +41,7 @@ function pt1000toC ($r, $r0) {
     $t+=sqrt(($a*$a) - 4.0 * $b * (1.0 - $r)); 
     $t/=(2.0 * $b); 
     
-    if($t>0&&$t<200) { 
+    if($t>0) { 
       return $t; 
     } 
     else { 
